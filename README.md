@@ -14,6 +14,8 @@ Once I had accomplished this I started working on instantiating a [single sprite
 
 Now that I had this and new my therory was working correctly, I started to go bigger by [populating my map](#Single-Sprite-Placement) with a large amount of sprites that was dictated by 2 different arrays.
 
+After I had created this I worked on other asspects of the game to see if I coudl bring it to pollish before the end of my 2 weeks. Such as Audio the blended between Scences, Rocket sounds that only played with the player pressed a key, and an explosion sound when the rocket hit the ground. I hope to expand on this project more in the future and post it to itch.oi.
+
 # Mesh Code
 ```
  private void Awake()
