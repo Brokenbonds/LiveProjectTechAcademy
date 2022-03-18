@@ -10,8 +10,9 @@ This page runs through the simple controls and objective in the game
 # The Level <br>
 Currently, there is only one level that repeats but due to the procedural map, the level is never the same. Increasing the playability of my simple game. You can find the code [here](#mesh-code) In the Awake method, I used a Vector3 List to create vertices for my Mesh which was the foundation of my map. From there, I turned them into a Vector 2 array and used this to ensure everything was on the same Z scale. Using another Array I created groups of 3 integers that would represent triangles for my mesh. I then tackled the normals of my mesh by creating a brand new Vector 3 List, all though I could have most likely just used the Mesh.RecalculateNormals to achieve a similar effect with less control.
 
-
 Once I had accomplished this I started working on instantiating a [single sprite](#single-sprite-placement) along the distance of my Vector2, I did this by grabbing the overall distance and creating a random number between 0 to max distance. Once I had this I was halfway there, I then had to figure out between which Vector 2s this number lay. I created an array that held distance from A-B, B-C, C-D, etc. then by running through this array I checked to see if the previous distance + the currant distance was bigger than my random distance. I was now able to determine which points I was landing between. Using a Lerp I was then able to put in these two Vector2 points and then divided my max distance and my random point after subtracting the distance between 0 and the closest point and voilà.
+
+Now that I had this and new my therory was working correctly, I started to go bigger by [populating my map](#Single-Sprite-Placement) with a large amount of sprites that was dictated by 2 different arrays.
 
 # Mesh Code
 ```
@@ -174,5 +175,52 @@ void SpaceSationPlacement(GameObject obj, List<Vector2> points)
         }
 
 
+    }
+```
+# Array Sprite Populator
+```
+ void MapSpritePopulation(GameObject[] obj,List<int> amountToSpawn, List<Vector2> points)
+        /* GameObject array holds the sprites
+         * int array hold the quantaties for each sprite
+         * Vector2 List holds the points I will be spawning across
+         */
+    {
+
+        //this first section figures out how many sections on the map there are and their distances.
+        float[] individualeDistances = new float[points.Count];// need to populate this array with each distance 1-2,2-3,3-4,etc.
+
+        for (int i = 0; i < points.Count - 1; i++)//use this for loop to populate above array
+        {
+            float disSmall = 0;
+            disSmall = Vector2.Distance(points[i], points[i + 1]);
+            individualeDistances[i] = disSmall;
+        }
+
+        //this section goes through the Vector 2 arrays and gets the distance between points 1-7(or higher)
+        //the reason for this is because of the direction I laid out my points.
+        float overAllDistance = 0;
+        for (int i = 0; i < points.Count - 1; i++)//this should only run 5 times, for now.
+        {
+            overAllDistance = overAllDistance + Vector2.Distance(points[i], points[i + 1]);
+
+        }
+
+
+        for (int k = 0; k < individualeDistances.Length; k++)// this is looking at how far we have instantiated on the Vector2s
+        {
+            for (int i = 0; i < obj.Length; i++)// this looks at what object we are spawning multipules of
+            {
+                for (int j = 1; j <= amountToSpawn[i] / (individualeDistances.Length - 1); j++)// this looks to see if the amount of objects has been reached. Position of the number in the array should corilate to the number position of the object being instantiated.
+                {
+                    //put in list that will store the x floats and check to see if there is a same number before exicuteing the instantiate functions.
+
+                    float spawnPositoin = Random.Range(0, individualeDistances[k])/individualeDistances[k];//get a random distance from the max distance for that individuale distance.
+
+                    GameObject.Instantiate(obj[i], Vector2.Lerp(points[k], points[k + 1], spawnPositoin), Quaternion.Euler(0, 0, 0));
+
+
+                }
+            }
+        }
     }
 ```
