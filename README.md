@@ -16,10 +16,10 @@ Currently, there is only one level that repeats but due to the procedural map, t
 Once I had accomplished this I started working on instantiating a [single sprite](#single-sprite-placement) along the distance of my Vector2, I did this by grabbing the overall distance and creating a random number between 0 to max distance. Once I had this I was halfway there, I then had to figure out between which Vector 2s this number lay. I created an array that held distance from A-B, B-C, C-D, etc. then by running through this array I checked to see if the previous distance + the currant distance was bigger than my random distance. I was now able to determine which points I was landing between. Using a Lerp I was then able to put in these two Vector2 points and then divided my max distance and my random point after subtracting the distance between 0 and the closest point and voilà.
 ![SingleSpriteCreation](https://raw.githubusercontent.com/Brokenbonds/LiveProjectTechAcademy/main/Images/SpawnRocks.gif)
 
-Now that I had this and new my therory was working correctly, I started to go bigger by [populating my map](#Single-Sprite-Placement) with a large amount of sprites that was dictated by 2 different arrays.<br>
+Now that I had this and know my theory was working correctly, I started to go bigger by [populating my map](#Single-Sprite-Placement) with a large number of sprites that were dictated by 2 different arrays.<br>
 ![MapSpriteCreation](https://raw.githubusercontent.com/Brokenbonds/LiveProjectTechAcademy/main/Images/SpriteGeneration.gif)
 
-After I had created this I worked on other asspects of the game to see if I coudl bring it to pollish before the end of my 2 weeks. Such as Audio the blended between Scences, Rocket sounds that only played with the player pressed a key, and an explosion sound when the rocket hit the ground. I hope to expand on this project more in the future and post it to itch.oi.
+After I had created this I worked on other aspects of the game to see if I could bring it to polish before the end of my 2 weeks. Such as Audio blended between Scenes, Rocket sounds that only played with the player pressed a key, and explosion sounds when the rocket hit the ground. I hope to expand on this project more in the future and post it to itch.oi.
 
 # Mesh Code
 ```
