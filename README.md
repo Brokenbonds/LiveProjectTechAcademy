@@ -11,10 +11,13 @@ This page runs through the simple controls and objective in the game
 
 # The Level <br>
 Currently, there is only one level that repeats but due to the procedural map, the level is never the same. Increasing the playability of my simple game. You can find the code [here](#mesh-code) In the Awake method, I used a Vector3 List to create vertices for my Mesh which was the foundation of my map. From there, I turned them into a Vector 2 array and used this to ensure everything was on the same Z scale. Using another Array I created groups of 3 integers that would represent triangles for my mesh. I then tackled the normals of my mesh by creating a brand new Vector 3 List, all though I could have most likely just used the Mesh.RecalculateNormals to achieve a similar effect with less control.
+![MeshCreation](https://raw.githubusercontent.com/Brokenbonds/LiveProjectTechAcademy/main/Images/Mountains.gif)
 
 Once I had accomplished this I started working on instantiating a [single sprite](#single-sprite-placement) along the distance of my Vector2, I did this by grabbing the overall distance and creating a random number between 0 to max distance. Once I had this I was halfway there, I then had to figure out between which Vector 2s this number lay. I created an array that held distance from A-B, B-C, C-D, etc. then by running through this array I checked to see if the previous distance + the currant distance was bigger than my random distance. I was now able to determine which points I was landing between. Using a Lerp I was then able to put in these two Vector2 points and then divided my max distance and my random point after subtracting the distance between 0 and the closest point and voilà.
+![SingleSpriteCreation](https://raw.githubusercontent.com/Brokenbonds/LiveProjectTechAcademy/main/Images/SpawnRocks.gif)
 
-Now that I had this and new my therory was working correctly, I started to go bigger by [populating my map](#Single-Sprite-Placement) with a large amount of sprites that was dictated by 2 different arrays.
+Now that I had this and new my therory was working correctly, I started to go bigger by [populating my map](#Single-Sprite-Placement) with a large amount of sprites that was dictated by 2 different arrays.<br>
+![MapSpriteCreation](https://raw.githubusercontent.com/Brokenbonds/LiveProjectTechAcademy/main/Images/SpriteGeneration.gif)
 
 After I had created this I worked on other asspects of the game to see if I coudl bring it to pollish before the end of my 2 weeks. Such as Audio the blended between Scences, Rocket sounds that only played with the player pressed a key, and an explosion sound when the rocket hit the ground. I hope to expand on this project more in the future and post it to itch.oi.
 
