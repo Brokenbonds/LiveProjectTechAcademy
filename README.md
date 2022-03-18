@@ -3,9 +3,11 @@ At the end of my Unity/C# programing module, I was tasked with a 2-week sprint t
 
 # Title Screen <br>
 The title screen was a simple image with a button to get you started
+![TitleScreen](https://raw.githubusercontent.com/Brokenbonds/LiveProjectTechAcademy/main/Images/TitleScreen.png)
 
 # Tutorial page <br>
 This page runs through the simple controls and objective in the game
+![TutorialPage](https://raw.githubusercontent.com/Brokenbonds/LiveProjectTechAcademy/main/Images/TutorialPage.gif)
 
 # The Level <br>
 Currently, there is only one level that repeats but due to the procedural map, the level is never the same. Increasing the playability of my simple game. You can find the code [here](#mesh-code) In the Awake method, I used a Vector3 List to create vertices for my Mesh which was the foundation of my map. From there, I turned them into a Vector 2 array and used this to ensure everything was on the same Z scale. Using another Array I created groups of 3 integers that would represent triangles for my mesh. I then tackled the normals of my mesh by creating a brand new Vector 3 List, all though I could have most likely just used the Mesh.RecalculateNormals to achieve a similar effect with less control.
