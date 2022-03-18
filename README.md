@@ -11,9 +11,9 @@ This page runs through the simple controls and objective in the game
 Currently, there is only one level that repeats but due to the procedural map, the level is never the same. Increasing the playability of my simple game. You can find the code [here](#mesh-code) In the Awake method, I used a Vector3 List to create vertices for my Mesh which was the foundation of my map. From there, I turned them into a Vector 2 array and used this to ensure everything was on the same Z scale. Using another Array I created groups of 3 integers that would represent triangles for my mesh. I then tackled the normals of my mesh by creating a brand new Vector 3 List, all though I could have most likely just used the Mesh.RecalculateNormals to achieve a similar effect with less control.
 
 
-Once I had accomplished this I started working on instantiating a single sprite along the distance of my Vector2, I did this by grabbing the overall distance and creating a random number between 0 to max distance. Once I had this I was halfway there, I then had to figure out between which Vector 2s this number lay. I created an array that held distance from A-B, B-C, C-D, etc. then by running through this array I checked to see if the previous distance + the currant distance was bigger than my random distance. I was now able to determine which points I was landing between. Using a Lerp I was then able to put in these two Vector2 points and then divided my max distance and my random point after subtracting the distance between 0 and the closest point and voilà.
+Once I had accomplished this I started working on instantiating a [single sprite](#single-sprite-placement) along the distance of my Vector2, I did this by grabbing the overall distance and creating a random number between 0 to max distance. Once I had this I was halfway there, I then had to figure out between which Vector 2s this number lay. I created an array that held distance from A-B, B-C, C-D, etc. then by running through this array I checked to see if the previous distance + the currant distance was bigger than my random distance. I was now able to determine which points I was landing between. Using a Lerp I was then able to put in these two Vector2 points and then divided my max distance and my random point after subtracting the distance between 0 and the closest point and voilà.
 
-#Mesh Code
+# Mesh Code
 ```
  private void Awake()
     {
@@ -125,5 +125,54 @@ Once I had accomplished this I started working on instantiating a single sprite 
         SpaceSationPlacement(square, pointsNeeded);
         MapSpritePopulation(planetSprites, planetSpritesPopulationAmout, pointsNeeded);
        
+    }
+```
+
+# Single Sprite Placement
+```
+void SpaceSationPlacement(GameObject obj, List<Vector2> points)
+    {
+        //this first section goes through the Vector 2 array and gets the distance between points 1-7(or higher)
+        //the reason for this is because of the direction I laid out my points.
+        float dis = 0;
+        for (int i = 0; i < points.Count-1; i++)//this should only run 5 times, for now.
+        {
+            dis = dis + Vector2.Distance(points[i], points[i+1]);
+            
+        }
+
+
+        float spawnPositoin = Random.Range(3, dis-3);//get a random distance from the max distance.
+        
+
+        float[] individualeDistances = new float[points.Count];// need to populate this array with each distance 1-2,2-3,3-4,etc.
+        for (int i = 0; i < points.Count-1; i++)//use this for loop to populate above array
+        {
+            dis = 0;
+            dis = Vector2.Distance(points[i], points[i + 1]);
+            individualeDistances[i] = dis;
+        }
+
+        float disCheck = 0;
+
+        for (int i = 0; i < individualeDistances.Length; i++)
+        {
+
+            if (disCheck + individualeDistances[i] > spawnPositoin) // this checkes everything else 2-3 all the way to 6-7(or higher if i want) instantiates the object.
+            {
+               
+                float equalsThis = (spawnPositoin -disCheck) / individualeDistances[i];
+                GameObject.Instantiate(obj, Vector2.Lerp(points[i], points[i + 1], equalsThis), Quaternion.Euler(0, 0, 0));
+                //this will do the same as before but subtract the max disCheck from spawnPosition so it doesn't go to far.
+                return;
+            }
+            else // if the above code fales, obvisouly my spawnPosition is farther so I want to add the current distance to my disCheck for the next loop
+            {
+                disCheck += individualeDistances[i];
+            }
+
+        }
+
+
     }
 ```
