@@ -21,7 +21,8 @@ Now that I had this and know my theory was working correctly, I started to go bi
 
 After I had created this I worked on other aspects of the game to see if I could bring it to polish before the end of my 2 weeks. Such as Audio blended between Scenes, Rocket sounds that only played with the player pressed a key, and explosion sounds when the rocket hit the ground. I hope to expand on this project more in the future and post it to itch.oi.
 
-# Mesh Code
+# Mesh Code <br>
+This is the code used to generate my ground mesh, as well as the polygon collider.
 ```
  private void Awake()
     {
@@ -137,6 +138,7 @@ After I had created this I worked on other aspects of the game to see if I could
 ```
 
 # Single Sprite Placement
+This is the code that instantiates the large purple rock along my Vector 2 points.
 ```
 void SpaceSationPlacement(GameObject obj, List<Vector2> points)
     {
@@ -185,6 +187,7 @@ void SpaceSationPlacement(GameObject obj, List<Vector2> points)
     }
 ```
 # Array Sprite Populator
+This is the code that populates the top of my mountain with a bunch of sprites using arrays for both the GameObjects and the amount for each object.
 ```
  void MapSpritePopulation(GameObject[] obj,List<int> amountToSpawn, List<Vector2> points)
         /* GameObject array holds the sprites
@@ -231,3 +234,13 @@ void SpaceSationPlacement(GameObject obj, List<Vector2> points)
         }
     }
 ```
+
+# Skills I learned <br>
+Through the making of this game, I've gained quite a few new skills and Improved others
+* Learned how to generate mesh through a script in Unity.
+* Problem solved how to utilize a lerp to place an object along several paths of Vector 2s.
+* Created an Audio Manager that utilized a class to import multiple music files and individual settings for each.
+* Learned how to utilize a Coroutine and the many different ways you can utilize them within the Unity Engin.
+* Created simple UI animations for fading in and out between scenes
+* Improved my understanding of Azure DevOps
+* Improved my understanding about Repository and how they operate 
