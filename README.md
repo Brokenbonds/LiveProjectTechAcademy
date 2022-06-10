@@ -1,5 +1,5 @@
 # Developer internships for Prosper I.T. Consulting in Unity <br>
-At the end of my Unity/C# programing module, I was tasked with a 2-week sprint to create an old arcade game in which I chose Lunar Lander. I was challenged not only with the coding stories that were presented to me but also with getting some good practice in a repository. After creating a clone from a Microsoft Azure Repository that held a Unity Project in which all other students were creating their programs as well, I was set to task. Some of the bigger challenges for me were procedural map creation and a fluid audio system. I called my project Ti.Tian Lander, which is a play off the periodic table element Titanium.
+During this intership, I was tasked with a 2-week sprint to create an old arcade game. I was challenged not only with the coding stories that were presented to me but also with getting some good practice in a repository. After creating a clone from a Microsoft Azure Repository that held a Unity Project, I was set to task. Some of the bigger challenges for me were procedural map creation and a fluid audio system.
 
 # Title Screen <br>
 The title screen was a simple image with a button to get you started
